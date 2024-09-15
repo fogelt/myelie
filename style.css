@@ -257,7 +257,6 @@ span{
     }
 
     .projects .projects-content h1 {
-        margin: 0;
         font-size: 3rem; /* Adjust font size for project heading */
     }
 
@@ -266,12 +265,6 @@ span{
         font-size: 1.6rem; /* Adjust font size */
     }
 
-    .projects-vid video {
-        width: 80%; /* Adjust video width */
-        height: auto; /* Maintain aspect ratio */
-        margin: 1rem auto; /* Center the video */
-        display: block; /* Ensure it's displayed as a block-level element */
-    }
     .nav a{
         font-size: 1.3rem;
     }
@@ -318,20 +311,11 @@ span{
     }
 
     .projects .projects-content h1 {
-        margin: 0;
         font-size: 3rem; /* Adjust font size for project heading */
     }
 
     .projects .projects-content p {
-        margin: 0;
         font-size: 1.6rem; /* Adjust font size */
-    }
-
-    .projects-vid video {
-        width: 80%; /* Adjust video width */
-        height: auto; /* Maintain aspect ratio */
-        margin: 1rem auto; /* Center the video */
-        display: block; /* Ensure it's displayed as a block-level element */
     }
 }
 
