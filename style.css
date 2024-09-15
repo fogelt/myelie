@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    
+
+}
+
+html{
+    font-size: 60%;
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: rgb(97, 101, 99);
+    color: rgb(255, 255, 255);
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(0, 0, 0);
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border: 0.2rem solid;
+    border-image: linear-gradient(to right, red, purple) 1;
+}
+
+.logo{
+    font-size: 2rem;
+    background: linear-gradient(to right, red, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.5s ease;
+
+}
+
+.logo:hover{
+    transform: scale(1.1);
+}
+
+
+nav a{
+    font-size: 1.8rem;
+    color: rgb(94, 94, 94);
+    margin-left: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 1px 1px 3px, rgba(255, 255, 255, 0.12) -1px -1px 3px;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+nav a:hover,
+nav a.active{
+    background: linear-gradient(to right, red, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, red, purple) 1;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    background-color: rgb(0, 0, 0);
+    min-height: 1vh;
+}
+
+.home-content .anim-text{
+    top: 30%;
+    right: 7%
+}
+
+#cycling-text {
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Add a smooth fade effect */
+}
+.home-content h1{
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+span{
+    background: linear-gradient(to right, red, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.home-content h3{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.home-content p{
+    position: relative;
+    z-index: 100;
+    margin-right: 20rem;
+    font-size: 2rem;
+}
+
+.home-img {
+    border-radius: 50%;
+}
+
+.home-img img{
+    position: relative;
+    box-shadow: 1 1 0px rgb(229, 101, 87);
+    transition: 0.2s linear;
+    width: 100%;
+
+}
+
+.home-img img:hover{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.social-icons a{
+    position: relative;
+    z-index: 100;
+    display: inline-flex;
+    background: linear-gradient(to right, red, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    border: 0.2rem solid;
+    border-image: linear-gradient(to right, red, purple) 1;
+    font-size: 3rem;
+    margin: 3rem 1.5rem 3rem;
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover{
+    color: white;
+    transform: scale(1.3) transparent;
+    background-color: rgb(229, 101, 87);
+    box-shadow: 
+    0 0 10px rgba(255, 0, 0, 0.8),   /* Red */
+    0 0 20px rgba(255, 0, 255, 0.6), /* Transition to Purple */
+    0 0 30px rgba(128, 0, 255, 0.4), /* Deeper Purple */
+    0 0 40px rgba(75, 0, 130, 0.3);  /* Fainter end of the gradient (e.g., indigo) */
+} 
+
+.projects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    background-color: rgb(0, 0, 0);
+    min-height: 50vh;
+}
+
+.projects-content h1{
+    margin-top: 15rem;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.projects-content h3{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.projects-content p{
+    margin-right: 20rem;
+    font-size: 2rem;
+}
+
+.projects-video {
+    border-radius: 50%;
+}
+
+.projects-vid video {
+    position: relative;
+    margin-top: 10rem;
+    margin-left: 5rem;
+    border-radius: 5%; /* Same border-radius */
+    border: 0.2rem solid white; /* Same border as the image */
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.projects-vid video:hover {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+    .home {
+        flex-direction: column; /* Stack elements vertically */
+        text-align: center; /* Center align text */
+    }
+
+    .home .home-content h1 {
+        font-size: 3.5rem; /* Adjust font size for smaller screens */
+        line-height: 1.2;
+        margin-top: 0rem;
+    }
+    .home-content .anim-text{
+        top: 25%;
+        right: 7%
+    }
+    .home .home-content p {
+        font-size: 1.6rem; /* Smaller font size for better fit */
+        margin: 1rem auto; /* Center align paragraphs */
+        padding: 1 1rem; /* Padding to prevent text from touching edges */
+        width: 100%;
+    }
+
+    .home .home-img img{
+        width: 100%; /* Adjust video width */
+        height: auto; /* Maintain aspect ratio */
+        display: block; /* Ensure it's displayed as a block-level element */
+    }
+
+    .social-icons {
+        justify-content: center; /* Center align social icons */
+    }
+
+    .projects {
+        flex-direction: column; /* Stack project content vertically */
+        padding: 20 20rem; /* Add padding */
+        text-align: center; /* Center align text */
+        padding-bottom: 10rem;
+        min-width: auto;
+    }
+
+    .projects .projects-content h1 {
+        margin: 0;
+        font-size: 3rem; /* Adjust font size for project heading */
+    }
+
+    .projects .projects-content p {
+        margin: 0;
+        font-size: 1.6rem; /* Adjust font size */
+    }
+
+    .projects-vid video {
+        width: 80%; /* Adjust video width */
+        height: auto; /* Maintain aspect ratio */
+        margin: 1rem auto; /* Center the video */
+        display: block; /* Ensure it's displayed as a block-level element */
+    }
+    .nav a{
+        font-size: 1.3rem;
+    }
+}
+
+/* Specific adjustments for very small screens */
+@media (max-width: 480px) and (orientation: portrait) {
+    .home {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 5 5rem; /* Add padding to prevent content from touching edges */
+        text-align: center; /* Center align text */
+    }
+    .home-content .anim-text{
+        top: 25%;
+        right: 7%
+    }
+    .home .home-content h1 {
+        font-size: 3.5rem; /* Adjust font size for smaller screens */
+        line-height: 1.2;
+    }
+
+    .home .home-content p {
+        font-size: 1.6rem; /* Smaller font size for better fit */
+        margin: 1rem auto; /* Center align paragraphs */
+        padding: 1 1rem; /* Padding to prevent text from touching edges */
+        width: 100%;
+    }
+
+    .home .home-img {
+        width: 100%; /* Adjust image width for mobile screens */
+        height: auto; /* Maintain aspect ratio */
+        display: block; /* Ensure it's displayed as a block-level element */
+    }
+
+    .social-icons {
+        justify-content: center; /* Center align social icons */
+    }
+
+    .projects {
+        flex-direction: column; /* Stack project content vertically */
+        padding: 20 20rem; /* Add padding */
+        text-align: center; /* Center align text */
+        padding-bottom: 10rem;
+    }
+
+    .projects .projects-content h1 {
+        margin: 0;
+        font-size: 3rem; /* Adjust font size for project heading */
+    }
+
+    .projects .projects-content p {
+        margin: 0;
+        font-size: 1.6rem; /* Adjust font size */
+    }
+
+    .projects-vid video {
+        width: 80%; /* Adjust video width */
+        height: auto; /* Maintain aspect ratio */
+        margin: 1rem auto; /* Center the video */
+        display: block; /* Ensure it's displayed as a block-level element */
+    }
+}
+
+.wrapper {
+    --size: 250px;
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    top: 100%;
+    left: 50%;
+    margin: calc(var(--size) / -2);
+  
+    span {
+    background: linear-gradient(to right, red, purple);
+      position: absolute;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    
+    p {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+    }
+    
+    p:nth-child(1) {
+      position: absolute;
+      animation: skewing-child .2s ease-in-out infinite alternate;
+      
+      span {
+        width: calc(var(--size) / 10);
+        height: calc(var(--size) / 10);
+        margin: calc(var(--size) / -20);;
+        animation: moving 2s cubic-bezier(.97,.01,.12,.99) infinite alternate;
+      }
+    }
+    
+    p:nth-child(2) {
+      position: absolute;
+      animation: squishing 1s ease-in-out infinite alternate;
+      
+      span {
+        width: calc(var(--size) / 4);
+        height: calc(var(--size) / 4);
+        top: 50%;
+        left: 50%;
+        margin: calc(var(--size) / -8);
+        animation: skewing 2s 1.5s ease-in-out infinite;
+      }
+    } 
+  }
+  
+  @keyframes skewing {
+    0% { transform: skewX(6deg); }
+    10% { transform: skewX(-6deg); }
+    20% { transform: skewX(4deg); }
+    30% { transform: skewX(-4deg); }
+    40% { transform: skewX(2deg); }
+    50% { transform: skewX(-6deg); }
+    55% { transform: skewX(6deg); }
+    60% { transform: skewX(-5deg); }
+    65% { transform: skewX(5deg); }
+    70% { transform: skewX(-4deg); }
+    75% { transform: skewX(4deg); }
+    80% { transform: skewX(-3deg); } 
+    85% { transform: skewX(3deg); }
+    90% { transform: skewX(-2deg); } 
+    95% { transform: skewX(2deg); }
+    100%   { transform: skewX(1deg); }
+  }
+  
+  @keyframes skewing-child {
+    0%      { transform: skewX(-10deg); }
+    100%     { transform: skewX(10deg); }
+  }
+  
+  @keyframes moving {
+    0% {transform: translate(calc(var(--size) / -2.5));}
+    30% {transform: translate(calc(var(--size) / -10));} 
+    70% {transform: translate(calc(var(--size) / 10));}
+    100% {transform: translate(calc(var(--size) / 2.5));}
+  }
+  
+  @keyframes squishing {
+    10%, 40%, 80% { transform: scale(1, .9); }
+    0%, 30%, 60%, 100% {transform: scale(.9, 1);}
+  }

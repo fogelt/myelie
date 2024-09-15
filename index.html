@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Edvins hemsida</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Myelie Photo</a>
+        <nav>
+            <div class="nav-div">
+                <a href="#" class="active">Hem</a>
+                <a href="#projects">Portfölj</a>
+            </div>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-img">
+            <img src="mysanprofil.jpg" alt="Portrait picture">
+        </div>
+        <div class="home-content">
+            <h1>Jag är <span>Myelie</span>, jag är din</h1>
+            <h1 class="anim-text"><span id="cycling-text">Bröllopsfotograf</span></h1>
+            <p>Kontakta mig</p>
+            <div class="social-icons">
+                <a href="#" target=”_blank” class="fa fa-facebook"></a>
+                <a href="#" target="_blank" class="fa fa-instagram"></a>
+                <a href="#" target="_blank" class="fa fa-envelope"></a>
+            </div>
+        </div>
+        <div class="wrapper">
+            <p><span></span></p>
+            <p><span></span></p>
+          </div>
+    </section>
+    <section class="projects" id="projects">
+        <div class="projects-vid">
+        </div>
+        <div class="projects-content">
+            <h1><span>Portfölj</span> bilder</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus eaque, deleniti, veniam magnam id adipisci ratione nulla, sapiente eum eveniet ex vero dicta aut excepturi. Ullam, laboriosam? Quia, nulla aliquam.</p>
+        </div>
+    </section>
+    <script>
+        // Select the navigation links
+        const navLinks = document.querySelectorAll('nav a');
+        const homeSection = document.querySelector('.home');
+        const projectsSection = document.querySelector('.projects');
+    
+        // Function to handle adding/removing the active class
+        function setActiveNav() {
+            // Get the current scroll position
+            let scrollPos = window.scrollY + window.innerHeight / 2; // Offset scroll position by half of viewport height for more accurate detection
+    
+            // Remove active class from all nav links
+            navLinks.forEach(link => link.classList.remove('active'));
+    
+            // Add active class based on scroll position
+            if (scrollPos >= projectsSection.offsetTop) {
+                navLinks[1].classList.add('active'); // Projects link
+            } else {
+                navLinks[0].classList.add('active'); // Home link
+            }
+        }
+    
+        // Attach the scroll event listener
+        window.addEventListener('scroll', setActiveNav);
+    
+        // Call the function once on load to set the initial state
+        setActiveNav();
+    </script>
+    <script>
+        // Define the array of texts to cycle through
+const phrases = ["Produktfotograf", "Porträttfotograf", "Eventfotograf", "Bröllopsfotograf"];
+let currentIndex = 0;
+const cyclingText = document.getElementById("cycling-text");
+
+// Function to change the text with fade effect
+function cycleText() {
+    // First, fade out the text by setting opacity to 0
+    cyclingText.style.opacity = 0;
+
+    // After 500ms (half of the transition duration), change the text and fade it back in
+    setTimeout(() => {
+        cyclingText.textContent = phrases[currentIndex];  // Update the text
+        currentIndex = (currentIndex + 1) % phrases.length;  // Move to the next phrase
+        cyclingText.style.opacity = 1;  // Fade the text back in
+    }, 1000);  // This delay should be half of the transition duration (1s / 2 = 500ms)
+}
+
+// Call cycleText every 3 seconds (3000 milliseconds)
+setInterval(cycleText, 3000);
+    </script>
+    
+    
+</body>
+</html>
