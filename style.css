@@ -91,7 +91,7 @@ nav a.active{
 }
 
 #cycling-text {
-    opacity: 0;
+    opacity: 1;
     transition: opacity 1s ease-in-out; /* Add a smooth fade effect */
 }
 .home-content h1{
@@ -280,10 +280,6 @@ span{
     .home-content .anim-text{
         top: 25%;
         right: 7%
-    }
-    .home .home-content h1 {
-        font-size: 3.5rem; /* Adjust font size for smaller screens */
-        line-height: 1.2;
     }
 
     .home .home-content p {
