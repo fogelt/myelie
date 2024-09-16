@@ -100,50 +100,41 @@ setInterval(cycleText, 3000);
     </script>
     <script>
         const track = document.getElementById("image-track");
-
-const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
-
-const handleOnUp = () => {
-  track.dataset.mouseDownAt = "0";  
-  track.dataset.prevPercentage = track.dataset.percentage;
-}
-
-const handleOnMove = e => {
-  if(track.dataset.mouseDownAt === "0") return;
-  
-  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-        maxDelta = window.innerWidth / 2;
-  
-  const percentage = (mouseDelta / maxDelta) * -100,
-        nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-        nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-  
-  track.dataset.percentage = nextPercentage;
-  
-  track.animate({
-    transform: `translate(${nextPercentage}%, -50%)`
-  }, { duration: 1200, fill: "forwards" });
-  
-  for(const image of track.getElementsByClassName("image")) {
-    image.animate({
-      objectPosition: `${100 + nextPercentage}% center`
-    }, { duration: 1200, fill: "forwards" });
-  }
-}
-
-/* -- Had to add extra lines for touch events -- */
-
-window.onmousedown = e => handleOnDown(e);
-
-window.ontouchstart = e => handleOnDown(e.touches[0]);
-
-window.onmouseup = e => handleOnUp(e);
-
-window.ontouchend = e => handleOnUp(e.touches[0]);
-
-window.onmousemove = e => handleOnMove(e);
-
-window.ontouchmove = e => handleOnMove(e.touches[0]);
-    </script>
+        
+        // Initialize starting points for automatic scrolling
+        track.dataset.prevPercentage = 0;
+        track.dataset.percentage = 0;
+        track.dataset.direction = 1; // 1 for scrolling right, -1 for scrolling left
+        
+        // Handle scroll animation
+        const handleAutoScroll = () => {
+          const maxDelta = window.innerWidth / 2;
+        
+          // Set the scroll speed (smaller value = slower, larger value = faster)
+          const scrollSpeed = 0.1;
+        
+          // Calculate the percentage based on direction
+          const nextPercentageUnconstrained = parseFloat(track.dataset.percentage) + track.dataset.direction * scrollSpeed;
+          const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+        
+          // Reverse direction if bounds are reached
+          if (nextPercentage <= -100 || nextPercentage >= 0) {
+            track.dataset.direction *= -1;
+          }
+        
+          track.dataset.percentage = nextPercentage;
+        
+          // Apply transformations for the track and images
+          track.style.transform = `translate(${nextPercentage}%, -50%)`;
+        
+          for (const image of track.getElementsByClassName("image")) {
+            image.style.objectPosition = `${100 + nextPercentage}% center`;
+          }
+        };
+        
+        // Start automatic scrolling with an interval
+        setInterval(handleAutoScroll, 20);
+        </script>
+        
 </body>
 </html>
