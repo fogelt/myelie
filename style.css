@@ -192,13 +192,14 @@ span{
     padding-top: 30rem;
     padding-bottom: 20rem;
     white-space: nowrap;
+    overflow: hidden;
   }
   
   #image-track > .image {
     width: 30vmin;
     height: 46vmin;
     object-fit: cover;
-    object-position: 100% center;
+    object-position: 50% center;
     transition: 0.5s ease;
   }
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Edvins hemsida</title>
@@ -101,43 +101,43 @@ function cycleText() {
 // Call cycleText every 3 seconds (3000 milliseconds)
 setInterval(cycleText, 3000);
     </script>
-    <script>
-        const track = document.getElementById("image-track");
-        
-        // Initialize starting points for automatic scrolling
-        track.dataset.prevPercentage = 0;
-        track.dataset.percentage = 0;
-        track.dataset.direction = 1; // 1 for scrolling right, -1 for scrolling left
-        
-        // Handle scroll animation
-        const handleAutoScroll = () => {
-          const maxDelta = window.innerWidth / 2;
-        
-          // Set the scroll speed (smaller value = slower, larger value = faster)
-          const scrollSpeed = 0.1;
-        
-          // Calculate the percentage based on direction
-          const nextPercentageUnconstrained = parseFloat(track.dataset.percentage) + track.dataset.direction * scrollSpeed;
-          const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-        
-          // Reverse direction if bounds are reached
-          if (nextPercentage <= -100 || nextPercentage >= 0) {
+   <script>
+    const track = document.getElementById("image-track");
+    
+    // Initialize starting points for automatic scrolling
+    track.dataset.prevPercentage = 0;
+    track.dataset.percentage = 0;
+    track.dataset.direction = 1; // 1 for scrolling right, -1 for scrolling left
+
+    // Handle scroll animation
+    const handleAutoScroll = () => {
+        const scrollSpeed = 0.1;
+
+        // Calculate the next percentage based on direction and clamp between -100 and 0
+        let nextPercentage = parseFloat(track.dataset.percentage) + track.dataset.direction * scrollSpeed;
+        nextPercentage = Math.max(Math.min(nextPercentage, 0), -100);
+
+        // Reverse direction if bounds are reached
+        if (nextPercentage <= -100 || nextPercentage >= 0) {
             track.dataset.direction *= -1;
-          }
-        
-          track.dataset.percentage = nextPercentage;
-        
-          // Apply transformations for the track and images
-          track.style.transform = `translate(${nextPercentage}%, -50%)`;
-        
-          for (const image of track.getElementsByClassName("image")) {
-            image.style.objectPosition = `${100 + nextPercentage}% center`;
-          }
-        };
-        
-        // Start automatic scrolling with an interval
-        setInterval(handleAutoScroll, 20);
-        </script>
+        }
+
+        track.dataset.percentage = nextPercentage;
+
+        // Apply transformations for the track
+        track.style.transform = `translate(${nextPercentage}%, -50%)`;
+
+        // Update object position of images to simulate parallax effect
+        for (const image of track.getElementsByClassName("image")) {
+            const objectPositionX = 50 + nextPercentage * 0.5; // Adjust the multiplier as needed
+            image.style.objectPosition = `${objectPositionX}% center`;
+        }
+    };
+
+    // Start automatic scrolling with an interval
+    setInterval(handleAutoScroll, 20);
+</script>
+
         
 </body>
 </html>
