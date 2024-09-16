@@ -15,11 +15,13 @@
 html{
     font-size: 60%;
     scroll-behavior: smooth;
+    max-width: 100vw;
 }
 
 body{
     width: 100%;
     height: 100vh;
+    max-width: 100vw;
     overflow-x: hidden;
     background-color: rgb(97, 101, 99);
     color: rgb(255, 255, 255);
@@ -188,9 +190,6 @@ span{
     user-select: none; /* -- Prevent image highlighting -- */
     padding-top: 30rem;
     padding-bottom: 20rem;
-
-    width: 100vw;
-    overflow: hidden;
   }
   
   #image-track > .image {
