@@ -179,7 +179,6 @@ span{
   }
   
   #image-track {
-    overflow-x: hidden;
     display: flex;
     gap: 4vmin;
     left: 50%;
@@ -189,10 +188,12 @@ span{
     user-select: none; /* -- Prevent image highlighting -- */
     padding-top: 30rem;
     padding-bottom: 20rem;
+
+    width: 100vw;
+    overflow: hidden;
   }
   
   #image-track > .image {
-    overflow-x: hidden;
     width: 30vmin;
     height: 46vmin;
     object-fit: cover;
