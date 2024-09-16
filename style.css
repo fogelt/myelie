@@ -15,15 +15,15 @@
 html{
     font-size: 60%;
     scroll-behavior: smooth;
-    max-width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 body{
     width: 100%;
     height: 100vh;
-    max-width: 100vw;
     overflow-x: hidden;
-    background-color: rgb(97, 101, 99);
+    background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
 }
 
@@ -176,7 +176,7 @@ span{
     height: 150vh;
     width: 100vw;
     background-color: black;
-    margin: 0rem;
+    margin: 0;
     overflow: hidden;
   }
   
@@ -190,6 +190,7 @@ span{
     user-select: none; /* -- Prevent image highlighting -- */
     padding-top: 30rem;
     padding-bottom: 20rem;
+    white-space: nowrap;
   }
   
   #image-track > .image {
@@ -205,13 +206,6 @@ span{
   }
 
 @media (max-width: 768px) and (orientation: portrait) {
-    body{
-        width: 100%;
-        height: 100vh;
-        overflow-x: hidden;
-        background-color: rgb(97, 101, 99);
-        color: rgb(255, 255, 255);
-    }
     .home {
         flex-direction: column; /* Stack elements vertically */
         text-align: center; /* Center align text */
@@ -250,13 +244,6 @@ span{
 
 /* Specific adjustments for very small screens */
 @media (max-width: 480px) and (orientation: portrait) {
-    body{
-        width: 100%;
-        height: 100vh;
-        overflow-x: hidden;
-        background-color: rgb(97, 101, 99);
-        color: rgb(255, 255, 255);
-    }
     .home {
         flex-direction: column; /* Stack elements vertically */
         padding: 5 5rem; /* Add padding to prevent content from touching edges */
