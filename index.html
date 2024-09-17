@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Edvins hemsida</title>
+    <title>Myelie Photo</title>
 </head>
 <body>
     <header>
@@ -38,17 +38,12 @@
     </section>
     <section class="projects" id="projects">
         <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-            <img class="image" height="500px"src="1.jpg" draggable="false" />
-            <img class="image" height="500px"src="2.jpg" draggable="false" />
-            <img class="image" height="500px"src="3.jpeg" draggable="false" />
-            <img class="image" height="500px"src="4.jpg" draggable="false" />
-            <img class="image" height="500px"src="5.jpg" draggable="false" />
-            <img class="image" height="500px"src="1.jpg" draggable="false" />
-            <img class="image" height="500px"src="2.jpg" draggable="false" />
-            <img class="image" height="500px"src="3.jpeg" draggable="false" />
-            <img class="image" height="500px"src="4.jpg" draggable="false" />
-            <img class="image" height="500px"src="5.jpg" draggable="false" />
-    
+            <img class="image" src="image-track/5.jpg" draggable="false" />
+            <img class="image" src="image-track/6.jpg" draggable="false" />
+            <img class="image" src="image-track/7.jpg" draggable="false" />
+            <img class="image" src="image-track/9.jpg" draggable="false" />
+            <img class="image" src="image-track/10.jpg" draggable="false" />
+            <img class="image" src="image-track/3.jpg" draggable="false" />
           </div>
     </section>
     <script>
@@ -103,39 +98,67 @@ setInterval(cycleText, 3000);
     </script>
    <script>
     const track = document.getElementById("image-track");
-    
-    // Initialize starting points for automatic scrolling
-    track.dataset.prevPercentage = 0;
-    track.dataset.percentage = 0;
-    track.dataset.direction = 1; // 1 for scrolling right, -1 for scrolling left
 
-    // Handle scroll animation
-    const handleAutoScroll = () => {
-        const scrollSpeed = 0.1;
+const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
 
-        // Calculate the next percentage based on direction and clamp between -100 and 0
-        let nextPercentage = parseFloat(track.dataset.percentage) + track.dataset.direction * scrollSpeed;
-        nextPercentage = Math.max(Math.min(nextPercentage, 0), -100);
+const handleOnUp = () => {
+  track.dataset.mouseDownAt = "0";  
+  track.dataset.prevPercentage = track.dataset.percentage;
+}
 
-        // Reverse direction if bounds are reached
-        if (nextPercentage <= -100 || nextPercentage >= 0) {
-            track.dataset.direction *= -1;
-        }
+const handleOnMove = e => {
+  if(track.dataset.mouseDownAt === "0") return;
+  
+  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+        maxDelta = window.innerWidth / 2;
+  
+  const percentage = (mouseDelta / maxDelta) * -100,
+        nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+        nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+  
+  track.dataset.percentage = nextPercentage;
+  
+  track.animate({
+    transform: `translate(${nextPercentage}%, -50%)`
+  }, { duration: 1200, fill: "forwards" });
+  
+  for(const image of track.getElementsByClassName("image")) {
+    image.animate({
+      objectPosition: `${100 + nextPercentage}% center`
+    }, { duration: 1200, fill: "forwards" });
+  }
+}
 
-        track.dataset.percentage = nextPercentage;
+/* -- Had to add extra lines for touch events -- */
 
-        // Apply transformations for the track
-        track.style.transform = `translate(${nextPercentage}%, -50%)`;
+window.onmousedown = e => handleOnDown(e);
 
-        // Update object position of images to simulate parallax effect
-        for (const image of track.getElementsByClassName("image")) {
-            const objectPositionX = 50 + nextPercentage * 0.5; // Adjust the multiplier as needed
-            image.style.objectPosition = `${objectPositionX}% center`;
-        }
-    };
+window.ontouchstart = e => handleOnDown(e.touches[0]);
 
-    // Start automatic scrolling with an interval
-    setInterval(handleAutoScroll, 20);
+window.onmouseup = e => handleOnUp(e);
+
+window.ontouchend = e => handleOnUp(e.touches[0]);
+
+window.onmousemove = e => handleOnMove(e);
+
+window.ontouchmove = e => handleOnMove(e.touches[0]);
+
+function preloadImages(imageArray) {
+    imageArray.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// List of images to preload
+preloadImages([
+    'image-track/3.jpg',
+    'image-track/5.jpg',
+    'image-track/6.jpg',
+    'image-track/7.jpg',
+    'image-track/8.jpg',
+    'image-track/9.jpg'
+]);
 </script>
 
         
