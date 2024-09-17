@@ -35,15 +35,16 @@
             <p><span></span></p>
             <p><span></span></p>
           </div>
+        <div class="divider"></div>
     </section>
     <section class="projects" id="projects">
         <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+            <img class="image" src="image-track/3.jpg" draggable="false" />
             <img class="image" src="image-track/5.jpg" draggable="false" />
-            <img class="image" src="image-track/6.jpg" draggable="false" />
             <img class="image" src="image-track/7.jpg" draggable="false" />
             <img class="image" src="image-track/9.jpg" draggable="false" />
             <img class="image" src="image-track/10.jpg" draggable="false" />
-            <img class="image" src="image-track/3.jpg" draggable="false" />
+            <img class="image" src="image-track/8.jpg" draggable="false" />
           </div>
     </section>
     <script>
@@ -143,22 +144,6 @@ window.onmousemove = e => handleOnMove(e);
 
 window.ontouchmove = e => handleOnMove(e.touches[0]);
 
-function preloadImages(imageArray) {
-    imageArray.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    });
-}
-
-// List of images to preload
-preloadImages([
-    'image-track/3.jpg',
-    'image-track/5.jpg',
-    'image-track/6.jpg',
-    'image-track/7.jpg',
-    'image-track/8.jpg',
-    'image-track/9.jpg'
-]);
 </script>
 
         
