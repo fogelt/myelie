@@ -79,6 +79,17 @@ nav a.active{
     border-image: linear-gradient(to right, red, purple) 1;
 }
 
+.theme-button {
+    position: absolute;
+    top: 60%;
+    right: 5%;
+    padding: 10px 20px;
+    background: linear-gradient(to right, red, purple);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
 .home {
     display: flex;
     justify-content: center;
@@ -223,6 +234,7 @@ span{
     height: 46vmin;
     object-fit: cover;
     object-position: 50% center;
+    overflow: hidden;
   }
 
 

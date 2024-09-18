@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link id ="theme-style" rel="stylesheet" href="style.css">
     <title>Myelie Photo</title>
 </head>
 <body>
@@ -19,9 +19,10 @@
     </header>
     <section class="home">
         <div class="home-img">
-            <img src="mysanprofil.jpg" alt="Portrait picture">
+            <img id="profile-picture" src="mysanprofil.jpg" alt="Portrait picture">
         </div>
         <div class="home-content">
+            <button class="theme-button" onclick="toggleTheme()">Byt tema</button>
             <h1><span>Myelie</span> är din</h1>
             <h1 class="anim-text"><span id="cycling-text">Bröllopsfotograf</span></h1>
             <p>Kontakta mig</p>
@@ -150,7 +151,48 @@ window.onmousemove = e => handleOnMove(e);
 window.ontouchmove = e => handleOnMove(e.touches[0]);
 
 </script>
+<script>
+    // Function to toggle between light and dark mode
+    const toggleTheme = () => {
+        const currentTheme = localStorage.getItem('theme');
 
+        if (currentTheme === 'dark') {
+            document.getElementById('theme-style').setAttribute('href', 'style.css');
+            document.getElementById('profile-picture').setAttribute('src', 'mysanprofil.jpg');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.getElementById('theme-style').setAttribute('href', 'style2.css');
+            document.getElementById('profile-picture').setAttribute('src', 'profilalt.jpg');
+            localStorage.setItem('theme', 'dark');
+        }
+        updateThemeDisplay(); // Update displayed theme after toggling
+    };
+
+    // Function to update the theme display
+    const updateThemeDisplay = () => {
+        const currentTheme = localStorage.getItem('theme') || 'light'; // Default to 'light'
+        document.getElementById('current-theme').textContent = currentTheme;
+        const profilePicture = document.getElementById('profile-picture');
+        if (currentTheme === 'dark') {
+            profilePicture.setAttribute('src', 'profilalt.jpg');
+        } else {
+            profilePicture.setAttribute('src', 'mysanprofil.jpg');
+        }
+    };
+
+    // Apply saved theme and update display and image on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.getElementById('theme-style').setAttribute('href', 'style2.css');
+            document.getElementById('profile-picture').setAttribute('src', 'profilalt.jpg');
+        } else {
+            document.getElementById('theme-style').setAttribute('href', 'style.css');
+            document.getElementById('profile-picture').setAttribute('src', 'mysanprofil.jpg');
+        }
+        updateThemeDisplay(); // Update theme display on load
+    });
+</script>
         
 </body>
 </html>
