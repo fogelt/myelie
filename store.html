@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="script.js" defer></script>
+  <link id ="theme-style" rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button class="store-button2">Köp</button>
+  <div id="image-masonry-container-store">
+    <div id="image-masonry-store">
+        <img class="image" src="image-track/1.jpg" draggable="false" />
+        <img class="image" src="image-track/2.jpg" draggable="false" />
+        <img class="image" src="profilalt.jpg" draggable="false" />
+        <img class="image" src="image-track/9.jpg" draggable="false" />
+        <img class="image" src="mysanprofil.jpg" draggable="false" />
+        <img class="image" src="image-track/8.jpg" draggable="false" />
+        <img class="image" src="image-track/11.jpg" draggable="false" />
+        <img class="image" src="image-track/10.jpg" draggable="false" />
+        <img class="image" src="image-track/12.jpg" draggable="false" />
+        <img class="image" src="image-track/13.jpg" draggable="false" />
+        <p>5000kr</p>
+    </div>
+</div>
+  <script>
+    // Function to toggle between light and dark mode
+    const toggleTheme = () => {
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark') {
+            document.getElementById('theme-style').setAttribute('href', 'style.css');
+            document.getElementById('profile-picture').setAttribute('src', 'mysanprofil.jpg');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.getElementById('theme-style').setAttribute('href', 'style2.css');
+            document.getElementById('profile-picture').setAttribute('src', 'profilalt.jpg');
+            localStorage.setItem('theme', 'dark');
+        }
+        updateThemeDisplay(); // Update displayed theme after toggling
+    };
+
+    // Function to update the theme display
+    const updateThemeDisplay = () => {
+        const currentTheme = localStorage.getItem('theme') || 'light'; // Default to 'light'
+        document.getElementById('current-theme').textContent = currentTheme;
+        const profilePicture = document.getElementById('profile-picture');
+        if (currentTheme === 'dark') {
+            profilePicture.setAttribute('src', 'profilalt.jpg');
+        } else {
+            profilePicture.setAttribute('src', 'mysanprofil.jpg');
+        }
+    };
+
+    // Apply saved theme and update display and image on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.getElementById('theme-style').setAttribute('href', 'style2.css');
+            document.getElementById('profile-picture').setAttribute('src', 'profilalt.jpg');
+        } else {
+            document.getElementById('theme-style').setAttribute('href', 'style.css');
+            document.getElementById('profile-picture').setAttribute('src', 'mysanprofil.jpg');
+        }
+        updateThemeDisplay(); // Update theme display on load
+    });
+</script>
+</body>
+</html>
